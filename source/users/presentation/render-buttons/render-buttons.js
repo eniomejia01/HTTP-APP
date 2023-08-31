@@ -1,4 +1,5 @@
 import  usersStore  from "../../store/users-store"; // Existe una diferencia entre import { usersStore} e import usersStore, puede generar errores sino se importa de la forma correcta
+import { renderTable } from "../render-table/render-table";
 
 import "./render-buttons.css";
 
@@ -21,6 +22,25 @@ export const renderButtons = ( element ) => {
 
 
     element.append( prevButton, currentPageLabel, nextButton  );
+    
+    nextButton.addEventListener('click', async() => {
+        await usersStore.loadNextPage();
+        currentPageLabel.innerText = usersStore.getCurrentPage();
+        renderTable( element );
+
+
+    });
+
+    prevButton.addEventListener('click', async() => {
+        await usersStore.loadPreviousPage();
+        currentPageLabel.innerText = usersStore.getCurrentPage();
+        renderTable( element );
+
+
+    });
+
+
+
 }
 
 
