@@ -1,3 +1,4 @@
+import { showModal } from "../render-modal.js/render-modal";
 import "./render-add-button.css";
 
 
@@ -18,6 +19,6 @@ export const renderAddButton = ( element ) => {
 
     //TODO: 
     fabButton.addEventListener( 'click', () => {
-        throw Error('no implementado');
+        showModal();
     })
 }
